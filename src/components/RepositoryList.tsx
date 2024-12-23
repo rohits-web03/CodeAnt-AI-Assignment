@@ -1,5 +1,5 @@
 import React from 'react';
-import { Search, RefreshCw, PlusCircle } from 'lucide-react';
+import { Search, RefreshCw, PlusCircle, Database } from 'lucide-react';
 import type { Repository } from '../types';
 
 const repositories: Repository[] = [
@@ -55,20 +55,10 @@ const repositories: Repository[] = [
 ];
 
 const LanguageIndicator: React.FC<{ language: string }> = ({ language }) => {
-  const colors: Record<string, string> = {
-    React: 'bg-blue-500',
-    Javascript: 'bg-yellow-400',
-    Python: 'bg-green-500',
-    Java: 'bg-red-500',
-    Swift: 'bg-orange-500',
-    'HTML/CSS': 'bg-purple-500',
-    PHP: 'bg-indigo-500'
-  };
-
   return (
     <div className="flex items-center gap-2">
-      <div className={`w-2 h-2 rounded-full ${colors[language] || 'bg-gray-400'}`} />
-      <span className="hidden sm:inline">{language}</span>
+      <span className="inline">{language}</span>
+      <div className={`w-2 h-2 rounded-full bg-[#1570EF]`} />
     </div>
   );
 };
@@ -81,12 +71,12 @@ export default function RepositoryList() {
           <h1 className="text-xl sm:text-2xl font-semibold mb-1">Repositories</h1>
           <p className="text-gray-600 text-sm">{repositories.length} total repositories</p>
         </div>
-        <div className="flex gap-2 w-full sm:w-auto">
+        <div className="flex gap-2 justify-start w-auto">
           <button className="flex items-center gap-2 px-3 py-2 rounded-md hover:bg-gray-100 flex-1 sm:flex-initial justify-center">
             <RefreshCw className="w-4 h-4" />
             <span>Refresh All</span>
           </button>
-          <button className="flex items-center gap-2 px-3 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 flex-1 sm:flex-initial justify-center">
+          <button className="flex items-center gap-2 px-3 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 justify-center">
             <PlusCircle className="w-4 h-4" />
             <span>Add Repository</span>
           </button>
@@ -102,26 +92,25 @@ export default function RepositoryList() {
         />
       </div>
 
-      <div className="space-y-4">
+      <div className="space-y-4 overflow-y-auto h-full max-h-[calc(100dvh-280px)] sm:max-h-[calc(100dvh-240px)] lg:max-h-[calc(100dvh-180px)]">
         {repositories.map((repo) => (
           <div
             key={repo.name}
             className="p-4 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors"
           >
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+            <div className="flex flex-col justify-between gap-2">
               <div className="flex items-center gap-2">
                 <h2 className="text-lg font-medium text-blue-600">{repo.name}</h2>
-                <span className={`px-2 py-1 text-xs rounded-full ${
-                  repo.visibility === 'Private' 
-                    ? 'bg-gray-100 text-gray-600' 
-                    : 'bg-blue-100 text-blue-600'
-                }`}>
+                <span className={`px-2 py-1 text-xs rounded-full bg-blue-100 text-blue-600`}>
                   {repo.visibility}
                 </span>
               </div>
               <div className="flex items-center gap-4 sm:gap-6 text-sm text-gray-600">
                 <LanguageIndicator language={repo.language} />
-                <span className="hidden sm:inline">{repo.size} KB</span>
+                <div className="flex items-center gap-1">
+                  <Database className='w-3 h-3'/>
+                  <span className="inline">{repo.size} KB</span>
+                </div>
                 <span>Updated {repo.updatedAt}</span>
               </div>
             </div>

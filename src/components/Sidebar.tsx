@@ -1,6 +1,5 @@
 import React from 'react';
-import { Home, Code2, Cloud, BookOpen, Settings, PhoneCall, LogOut, X } from 'lucide-react';
-import { CodeSquare } from './icons/CodeSqaure';
+import { Home, Code2, Cloud, BookOpen, Settings, PhoneCall, LogOut, X, ChevronDown } from 'lucide-react';
 import { useMediaQuery } from '../hooks/useMediaQuery';
 
 interface SidebarProps {
@@ -47,9 +46,9 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
         ${!isMedium ? 'fixed inset-x-0 top-0 z-30' : ''}
         bg-white border-r border-gray-200 flex flex-col
       `}>
-        <div className="p-4 border-b border-gray-200 flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <CodeSquare className="w-8 h-8" />
+        <div className="p-4 flex items-center justify-between">
+          <div className="flex items-center gap-[11px]">
+            <img src='/logo.png' className='w-[28.5px] h-[32px]'/>
             <span className="font-semibold text-lg">CodeAnt AI</span>
           </div>
           {!isMedium && (
@@ -62,13 +61,14 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
           )}
         </div>
 
-        <div className="px-4 py-2 border-b border-gray-200">
-          <button className="w-full text-left px-3 py-1.5 rounded-md bg-gray-100 text-sm">
-            UtkarshDhairyaPatel
+        <div className="flex justify-start items-center mx-4 my-2 px-2 py-1 rounded-md border border-gray-400 bg-white">
+          <button className="w-full text-left px-3 py-1.5 text-sm">
+            Utkarsh Dhairya Patel
           </button>
+          <ChevronDown />
         </div>
 
-        <nav className="flex-1 p-2">
+        <nav className="flex-1 px-4 py-2">
           {mainMenuItems.map((item) => (
             <button
               key={item.label}
@@ -83,7 +83,7 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
           ))}
         </nav>
 
-        <div className="p-2 border-t border-gray-200">
+        <div className="px-4 py-2">
           {bottomMenuItems.map((item) => (
             <button
               key={item.label}

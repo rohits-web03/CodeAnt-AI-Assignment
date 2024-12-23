@@ -9,7 +9,7 @@ function RepositoryScreen() {
   const isDesktop = useMediaQuery('(min-width: 1024px)');
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="h-screen bg-gray-50 overflow-hidden">
       <MobileHeader 
         isOpen={isSidebarOpen} 
         onToggle={() => setIsSidebarOpen(!isSidebarOpen)} 
