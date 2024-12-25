@@ -48,8 +48,13 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
       `}>
         <div className="p-4 flex items-center justify-between">
           <div className="flex items-center gap-[11px]">
-            <img src='/logo.png' className='w-[28.5px] h-[32px]'/>
-            <span className="font-semibold text-lg">CodeAnt AI</span>
+            <img
+              src='/codeantlogo.png'
+              alt="CodeAnt AI"
+              width={!isMedium? 150:180}
+              height={!isMedium? 150:180}
+              className={`mx-auto mb-2 ${!isMedium?'mb-0 mt-2':''}`}
+            />
           </div>
           {!isMedium && (
             <button 

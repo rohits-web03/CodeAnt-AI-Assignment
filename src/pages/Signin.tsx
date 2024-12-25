@@ -13,11 +13,6 @@ export default function SignIn() {
         <div className="w-full max-w-lg mt-20">
           <StatsCard />
         </div>
-        <img 
-          src="/ant-watermark.svg" 
-          alt="" 
-          className="absolute -bottom-20 -left-20 w-[500px] opacity-10"
-        />
       </div>
 
       {/* Right Section - Sign In */}
